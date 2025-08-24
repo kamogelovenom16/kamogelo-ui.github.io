@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Technology News - PulsePro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">PulsePro</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="football.html">Football</a>
+      <a href="technology.html">Technology</a>
+      <a href="streamers.html">Streamers</a>
+      <a href="rappers.html">Rappers</a>
+      <a href="archives.html">Archives</a>
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+    </nav>
+  </header>
+
+  <main>
+  <h1>Latest Technology News</h1>
+
+  <div class="news-card">
+    <h3>Apple iPhone 17 Pro Max Set to Launch</h3>
+    <p>The highly anticipated Apple iPhone 17 Pro Max is expected to be unveiled on September 9, 2025, featuring a titanium design, micro-lens OLED displays, and enhanced camera capabilities. Price is projected at $1,499 in the USA.</p>
+  </div>
+
+  <div class="news-card">
+    <h3>GPT-5 Revolutionizes AI Capabilities</h3>
+    <p>OpenAI has launched GPT-5, a major advancement in AI reasoning and natural language understanding, expected to transform automation, decision-making, and professional workflows across industries.</p>
+  </div>
+
+  <div class="news-card">
+    <h3>Tech Giants Launch Foldable Devices</h3>
+    <p>Leading technology companies have unveiled next-generation foldable phones and tablets, promising innovative displays and seamless multitasking capabilities for users worldwide.</p>
+  </div>
+
+  <div class="news-card">
+    <h3>SpaceX Successfully Tests New Rocket</h3>
+    <p>SpaceX's latest rocket test successfully demonstrated the capability for long-distance space travel, bringing humanity closer to Mars missions and advanced interplanetary exploration.</p>
+  </div>
+  
+    <!-- COMMENTS SECTION -->
+    <section id="comments">
+      <h2>Comments</h2>
+      <form id="commentForm">
+        <textarea id="commentText" rows="3" placeholder="Write a comment..." required></textarea>
+        <button type="submit">Post Comment</button>
+      </form>
+      <div id="commentsList"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 PulsePro. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const commentForm = document.getElementById('commentForm');
+    const commentsList = document.getElementById('commentsList');
+
+    function loadComments(){
+      const comments = JSON.parse(localStorage.getItem('techComments') || '[]');
+      commentsList.innerHTML = '';
+      comments.forEach(c => {
+        const div = document.createElement('div');
+        div.className = 'comment';
+        div.innerHTML = `<strong>${c.user}</strong>: ${c.text}`;
+        commentsList.appendChild(div);
+      });
+    }
+
+    commentForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      const user = JSON.parse(localStorage.getItem('loggedInUser'))?.username || 'Guest';
+      const text = document.getElementById('commentText').value;
+      const comments = JSON.parse(localStorage.getItem('techComments') || '[]');
+      comments.push({ user, text });
+      localStorage.setItem('techComments', JSON.stringify(comments));
+      document.getElementById('commentText').value = '';
+      loadComments();
+    });
+
+    loadComments();
+  </script>
+</body>
+</html>

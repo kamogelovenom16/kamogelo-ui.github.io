@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Streamers News - PulsePro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">PulsePro</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="football.html">Football</a>
+      <a href="technology.html">Technology</a>
+      <a href="streamers.html">Streamers</a>
+      <a href="rappers.html">Rappers</a>
+      <a href="archives.html">Archives</a>
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+    </nav>
+  </header>
+
+  <main>
+  <h1>Latest Streamer News</h1>
+
+  <div class="news-card">
+    <h3>Ludwig's Streamer Games 2025 Returns</h3>
+    <p>Ludwig's Streamer Games 2025 made a highly anticipated return on August 16-17, featuring 40 top content creators competing in Olympic-style challenges. The event was livestreamed on Ludwig's YouTube and Twitch channels, as well as Red Bull's Twitch channel. Fans could also attend in person at Leuzinger High School in Los Angeles.</p>
+  </div>
+
+  <div class="news-card">
+    <h3>Pokimane Announces Twitch Break</h3>
+    <p>Popular streamer Pokimane has announced a temporary break from Twitch to focus on personal projects and mental health. She assures fans that she will return later this year with new content.</p>
+  </div>
+
+  <div class="news-card">
+    <h3>XQc Hits Record Viewership</h3>
+    <p>Twitch streamer XQc recently reached a record-breaking concurrent viewership during a live charity stream, drawing over 300,000 viewers at peak times and raising significant donations for charity.</p>
+  </div>
+
+  <div class="news-card">
+    <h3>Shroud Launches New Gaming Apparel Line</h3>
+    <p>Former professional CS:GO player and streamer Shroud launched his new gaming apparel brand, aiming to combine comfort and style for gamers worldwide.</p>
+  </div>
+
+
+    <!-- COMMENTS SECTION -->
+    <section id="comments">
+      <h2>Comments</h2>
+      <form id="commentForm">
+        <textarea id="commentText" rows="3" placeholder="Write a comment..." required></textarea>
+        <button type="submit">Post Comment</button>
+      </form>
+      <div id="commentsList"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 PulsePro. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const commentForm = document.getElementById('commentForm');
+    const commentsList = document.getElementById('commentsList');
+
+    function loadComments(){
+      const comments = JSON.parse(localStorage.getItem('streamerComments') || '[]');
+      commentsList.innerHTML = '';
+      comments.forEach(c => {
+        const div = document.createElement('div');
+        div.className = 'comment';
+        div.innerHTML = `<strong>${c.user}</strong>: ${c.text}`;
+        commentsList.appendChild(div);
+      });
+    }
+
+    commentForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      const user = JSON.parse(localStorage.getItem('loggedInUser'))?.username || 'Guest';
+      const text = document.getElementById('commentText').value;
+      const comments = JSON.parse(localStorage.getItem('streamerComments') || '[]');
+      comments.push({ user, text });
+      localStorage.setItem('streamerComments', JSON.stringify(comments));
+      document.getElementById('commentText').value = '';
+      loadComments();
+    });
+
+    loadComments();
+  </script>
+</body>
+</html>

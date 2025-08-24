@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Football News - PulsePro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">PulsePro</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="football.html">Football</a>
+      <a href="technology.html">Technology</a>
+      <a href="streamers.html">Streamers</a>
+      <a href="rappers.html">Rappers</a>
+      <a href="archives.html">Archives</a>
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+    </nav>
+  </header>
+
+  <main>
+  <h1>Latest Football News</h1>
+
+  <div class="news-card">
+    <h3>FC Barcelona's Dramatic Comeback Against Levante</h3>
+    <p>FC Barcelona showcased their resilience with a thrilling 3-2 comeback victory over Levante in La Liga. Coach Hansi Flick praised the team's persistence, while standout performances came from Ferran Torres and Pedri. Meanwhile, promising youth midfielder Guille Fernández chose to stay at the club, turning down interest from teams like Dortmund and Porto.</p>
+  </div>
+
+  <div class="news-card">
+    <h3>Real Madrid Prepares for Match Against Real Oviedo</h3>
+    <p>Real Madrid is gearing up for their upcoming match against Real Oviedo. With key absentees like Eduardo Camavinga and Jude Bellingham, coach Xabi Alonso has called up Franco Mastantuono from Castilla. Despite the challenges, expectations for a win remain high as the club looks to build momentum.</p>
+  </div>
+
+  <div class="news-card">
+    <h3>Liverpool Signs New Forward for 2025 Season</h3>
+    <p>Liverpool has finalized the signing of a new forward to strengthen their attacking lineup. The player is expected to make his debut in the upcoming Premier League matches, aiming to boost Liverpool's title chances.</p>
+  </div>
+
+    <!-- COMMENTS SECTION -->
+    <section id="comments">
+      <h2>Comments</h2>
+      <form id="commentForm">
+        <textarea id="commentText" rows="3" placeholder="Write a comment..." required></textarea>
+        <button type="submit">Post Comment</button>
+      </form>
+      <div id="commentsList"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 PulsePro. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const commentForm = document.getElementById('commentForm');
+    const commentsList = document.getElementById('commentsList');
+
+    function loadComments(){
+      const comments = JSON.parse(localStorage.getItem('footballComments') || '[]');
+      commentsList.innerHTML = '';
+      comments.forEach(c => {
+        const div = document.createElement('div');
+        div.className = 'comment';
+        div.innerHTML = `<strong>${c.user}</strong>: ${c.text}`;
+        commentsList.appendChild(div);
+      });
+    }
+
+    commentForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      const user = JSON.parse(localStorage.getItem('loggedInUser'))?.username || 'Guest';
+      const text = document.getElementById('commentText').value;
+      const comments = JSON.parse(localStorage.getItem('footballComments') || '[]');
+      comments.push({ user, text });
+      localStorage.setItem('footballComments', JSON.stringify(comments));
+      document.getElementById('commentText').value = '';
+      loadComments();
+    });
+
+    loadComments();
+  </script>
+</body>
+</html>

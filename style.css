@@ -1,0 +1,220 @@
+/* General Styles */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif; }
+body { background-color: #f9f9f9; color: #333; line-height: 1.6; }
+
+/* Header */
+header {
+  background-color: #0d6efd;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header .logo { font-size: 1.5rem; font-weight: bold; }
+header nav a {
+  color: white;
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: 500;
+}
+header nav a:hover { text-decoration: underline; }
+
+/* Main Content */
+main { max-width: 1100px; margin: 20px auto; padding: 0 15px; }
+h1, h2 { margin-bottom: 10px; color: #0d6efd; }
+ul { margin-left: 20px; margin-bottom: 15px; }
+.news-item { background: #fff; padding: 15px; margin-bottom: 15px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+
+/* Footer */
+footer { background-color: #222; color: #fff; text-align: center; padding: 15px 0; margin-top: 40px; }
+
+/* Buttons */
+button, .btn {
+  background-color: #0d6efd; color: white; padding: 10px 18px;
+  border: none; cursor: pointer; border-radius: 6px; transition: 0.3s;
+}
+button:hover, .btn:hover { background-color: #0b5ed7; }
+
+/* Forms */
+input, textarea { width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 6px; border: 1px solid #ccc; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  header { flex-direction: column; align-items: flex-start; }
+  header nav { margin-top: 10px; }
+  header nav a { margin-left: 0; margin-right: 15px; }
+}
+/* ========== GENERAL STYLING ========== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* ========== HEADER & NAVIGATION ========== */
+header {
+  background-color: #1e1e1e;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+header .logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+header nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 15px;
+  transition: color 0.3s;
+}
+
+header nav a:hover {
+  color: #ff4d4d;
+}
+
+/* ========== MAIN CONTENT ========== */
+main {
+  padding: 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* ========== HEADINGS ========== */
+h1, h2, h3 {
+  margin-bottom: 15px;
+  color: #1e1e1e;
+}
+
+/* ========== NEWS CARDS ========== */
+.news-card {
+  background-color: white;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 3px 8px rgba(0,0,0,0.1);
+}
+
+.news-card h3 {
+  margin-bottom: 10px;
+}
+
+.news-card p {
+  font-size: 0.95rem;
+}
+
+/* ========== FORMS ========== */
+form {
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 3px 8px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+form label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+form input, form textarea, form button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+form button {
+  background-color: #1e1e1e;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+form button:hover {
+  background-color: #ff4d4d;
+}
+
+/* ========== COMMENTS SECTION ========== */
+#comments {
+  margin-top: 30px;
+}
+
+#comments .comment {
+  background-color: #f1f1f1;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+/* ========== FOOTER ========== */
+footer {
+  background-color: #1e1e1e;
+  color: white;
+  text-align: center;
+  padding: 15px 20px;
+  margin-top: 30px;
+}
+
+/* ========== LINKS ========== */
+a {
+  color: #1e1e1e;
+}
+
+a:hover {
+  color: #ff4d4d;
+}
+
+/* ========== ARCHIVES & LISTS ========== */
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+ul li {
+  margin-bottom: 10px;
+}
+
+/* ========== MEDIA QUERIES (MOBILE RESPONSIVE) ========== */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  header nav {
+    margin-top: 10px;
+  }
+
+  header nav a {
+    margin-left: 0;
+    margin-right: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    padding: 15px;
+  }
+
+  form input, form textarea, form button {
+    font-size: 0.9rem;
+  }
+}

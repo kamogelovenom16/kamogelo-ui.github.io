@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rappers News - PulsePro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">PulsePro</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="football.html">Football</a>
+      <a href="technology.html">Technology</a>
+      <a href="streamers.html">Streamers</a>
+      <a href="rappers.html">Rappers</a>
+      <a href="archives.html">Archives</a>
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+    </nav>
+  </header>
+
+  <main>
+  <h1>Latest Rapper News</h1>
+
+  <div class="news-card">
+    <h3>Lil Nas X Arrested in Los Angeles</h3>
+    <p>Grammy-winning artist Lil Nas X was arrested on August 21, 2025, after a bizarre incident on Ventura Boulevard in Los Angeles. Witnesses reported him walking nearly naked, rapping Nicki Minaj's "Monster," and charging at officers. He was taken into custody for misdemeanor battery and was later hospitalized for a suspected overdose. The incident has raised concerns about his mental health and sparked widespread media attention. <a href="https://www.vulture.com/article/lil-nas-x-arrest-hospitalized.html" target="_blank">Read more</a></p>
+  </div>
+
+  <div class="news-card">
+    <h3>DDG Launches Dating Show Amid Personal Turmoil</h3>
+    <p>Rapper and streamer DDG has launched a new live-streamed dating show titled *Are You My Ball?*, featuring 25 women competing for his affection. The show has gained significant traction for its high-quality 3D production and dramatic format. This launch comes amid personal turmoil, including an ongoing custody battle with ex-partner Halle Bailey over their son, Halo. <a href="https://indiatimes.com/trending/ddg-drops-dating-show-are-you-my-ball-amid-halle-bailey-custody-fight-india-love-romance-rumours-25-women-compete-for-his-love-667656.html" target="_blank">Read more</a></p>
+  </div>
+
+  <div class="news-card">
+    <h3>Ice Spice Sparks Romance Rumors with Diamant Blazi</h3>
+    <p>Rapper Ice Spice has ignited romance rumors after being spotted leaving Cecconi's restaurant in West Hollywood with TikTok star and basketball player Diamant Blazi. This appearance has fueled speculation about a potential breakup with her NFL boyfriend, Sauce Gardner, especially since the two haven’t been publicly seen together since early summer. <a href="https://timesofindia.indiatimes.com/sports/nfl/news/ice-spice-sparks-sizzling-romance-rumors-with-tiktok-star-diamant-blazi-fueling-sauce-gardner-breakup-speculation/articleshow/123455330.cms" target="_blank">Read more</a></p>
+  </div>
+
+  <div class="news-card">
+    <h3>Ali Younes Faces Legal Trouble Over Assault</h3>
+    <p>Australian rapper Ali "Ay Huncho" Younes has been charged in connection with a violent assault that took place in Granville on January 19, 2024. CCTV footage showed several individuals arriving in a white Toyota HiLux and later removing the unconscious victim from a garage. Younes was reportedly overheard bragging about the assault. He remains in protective custody due to alleged ties to the Alameddine crime family. <a href="https://www.news.com.au/national/nsw-act/courts-law/ali-ay-huncho-younes-allegedly-bragged-over-mans-bashing/news-story/8d092bc9e3c2b5de6b2fef6e704ccf87" target="_blank">Read more</a></p>
+  </div>
+
+  <div class="news-card">
+    <h3>Raye Halts Performance to Assist Collapsed Fan</h3>
+    <p>British singer Raye halted her performance at the All Points East Festival after noticing a fan had collapsed in the crowd. She quickly called for security assistance, asked the audience to clear a path, and waited for confirmation that the individual received help. This incident mirrors a previous situation at the Jazzopen festival in Stuttgart, Germany, where Raye also stopped her show to assist a fan in distress. <a href="https://www.thesun.ie/tvandshowbiz/15734105/raye-halt-performance-fan-collapse-all-points-east/" target="_blank">Read more</a></p>
+  </div>
+
+
+    <!-- COMMENTS SECTION -->
+    <section id="comments">
+      <h2>Comments</h2>
+      <form id="commentForm">
+        <textarea id="commentText" rows="3" placeholder="Write a comment..." required></textarea>
+        <button type="submit">Post Comment</button>
+      </form>
+      <div id="commentsList"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 PulsePro. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const commentForm = document.getElementById('commentForm');
+    const commentsList = document.getElementById('commentsList');
+
+    function loadComments(){
+      const comments = JSON.parse(localStorage.getItem('rapperComments') || '[]');
+      commentsList.innerHTML = '';
+      comments.forEach(c => {
+        const div = document.createElement('div');
+        div.className = 'comment';
+        div.innerHTML = `<strong>${c.user}</strong>: ${c.text}`;
+        commentsList.appendChild(div);
+      });
+    }
+
+    commentForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      const user = JSON.parse(localStorage.getItem('loggedInUser'))?.username || 'Guest';
+      const text = document.getElementById('commentText').value;
+      const comments = JSON.parse(localStorage.getItem('rapperComments') || '[]');
+      comments.push({ user, text });
+      localStorage.setItem('rapperComments', JSON.stringify(comments));
+      document.getElementById('commentText').value = '';
+      loadComments();
+    });
+
+    loadComments();
+  </script>
+</body>
+</html>
